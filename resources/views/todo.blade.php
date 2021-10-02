@@ -92,7 +92,7 @@
             },
             methods:{
                 completeData: function (id,complete,title) {
-                    axios.put("{{url('http://127.0.0.1:8000/api/to-do-list')}}/"+id,
+                    axios.put("{{url('/api/to-do-list')}}/"+id,
                             {
                                 complete : complete,
                                 title: title
@@ -109,7 +109,7 @@
                     $('#modal-form').modal('show')
                 },
                 getData: function () {
-                    axios.get("{{url('http://127.0.0.1:8000/api/to-do-list')}}")
+                    axios.get("{{url('/api/to-do-list')}}")
                         .then(response=>{
                             const data = response.data
                             this.data_list = data.data
@@ -120,7 +120,7 @@
                 },
                 saveData: function () {
                     if (this.id) {
-                        axios.put("{{url('http://127.0.0.1:8000/api/to-do-list')}}/"+this.id,
+                        axios.put("{{url('/api/to-do-list')}}/"+this.id,
                             {
                                 title : this.title,
                                 complete: this.complete
@@ -138,7 +138,7 @@
                                 this.complete = ""
                             })
                     }else{
-                        axios.post("{{url('http://127.0.0.1:8000/api/to-do-list')}}",
+                        axios.post("{{url('/api/to-do-list')}}",
                             {
                                 title : this.title
                             }
@@ -155,7 +155,7 @@
                 },
                 editData: function (id) {
                     this.id = id
-                    axios.get("{{url('http://127.0.0.1:8000/api/to-do-list')}}/"+id)
+                    axios.get("{{url('/api/to-do-list')}}/"+id)
                         .then(response=>{
                             const data = response.data
                             this.title = data.data.title
@@ -169,7 +169,7 @@
                 },
                 deleteData: function (id) {
                     this.id = id
-                    axios.delete("{{url('http://127.0.0.1:8000/api/to-do-list')}}/"+id)
+                    axios.delete("{{url('/api/to-do-list')}}/"+id)
                         .then(response=>{
                             alert('delete success')
                             this.id = ""
